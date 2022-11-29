@@ -1,4 +1,3 @@
-#include "stdio.h"
 #include "lists.h"
 
 /**
@@ -11,12 +10,25 @@
 
 int check_cycle(listint_t *list)
 {
-	if (list->next == NULL)
-	{
+	listint_t *fast = list;
+	listint_t *slow = list;
+
+	if (list->next == NULL || list == NULL)
 		return (0);
-	}
-	else
+
+	while(1)
 	{
-		return (1);
+		/*traverse through nodes as long as linked list node exists*/
+		if (fast->next != NULL && fast->next->next != NULL)
+		{
+			fast = fast->next->next;
+			slow = slow->next;
+
+			/*if nodes match, cycle found*/
+			if (fast == slow)
+				return (1);
+		}
+		else
+			return (0);
 	}
 }
