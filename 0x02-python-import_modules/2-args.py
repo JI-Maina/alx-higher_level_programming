@@ -14,4 +14,4 @@ if __name__ == '__main__':
         print("{} arguements:".format(x))
 
     for i in range(x):
-        print("{}: {}".format(i + 1, sys.argv[i + 1]))
+        print("{}: {}".format((i + 1), sys.argv[i + 1]))
