@@ -7,10 +7,8 @@ if __name__ == '__main__':
     if x < 1:
         print("0 arguements.")
     elif x == 1:
-        print("{} arguement:".format(x))
-        print("{}: {}".format(x, sys.argv[1]))
+        print("1 arguement:")
     else:
         print("{} arguements:".format(x))
-        for i in range(len(sys.argv)):
-            if i >= 1:
-                print("{}: {}".format(i, sys.argv[i]))
+    for i in range(x):
+        print("{}: {}".format(i + 1, sys.argv[i + 1]))
