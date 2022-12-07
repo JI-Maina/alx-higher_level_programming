@@ -5,6 +5,6 @@
 def search_replace(my_list, search, replace):
     list = my_list.copy()
     for i in range(len(list)):
-        if list[i] == 2:
-            list[i] = 89
+        if list[i] == search:
+            list[i] = replace
     return list
