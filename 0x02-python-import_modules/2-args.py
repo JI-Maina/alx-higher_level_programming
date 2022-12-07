@@ -6,7 +6,7 @@ if __name__ == '__main__':
 
     x = len(sys.argv) - 1
 
-    if x < 1:
+    if x == 0:
         print("0 arguements.")
     elif x == 1:
         print("1 arguement:")
