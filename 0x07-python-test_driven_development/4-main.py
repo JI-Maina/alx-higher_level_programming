@@ -16,3 +16,5 @@ except Exception as e:
 print("")
 print_square(4.4)
 print("")
+print_square(None)
+print("")
