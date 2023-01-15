@@ -90,5 +90,19 @@ class Rectangle(Base):
 
     def display(self):
         """Prints in stdout the Rectangle instance with the character #."""
+#       [print("") for m in range(self.y)]
+        for m in range(self.y):
+            print("")
         for i in range(self.height):
-            print('#' * self.__width)
+            for j in range(self.x):
+                print(' ', end="")
+            for k in range(self.width):
+                print('#', end="")
+            print()
+#            [print('_', end='') for k in range(self.x)]
+#            [print('#', end='') for j in range(self.width)]
+
+    def __str__(self):
+        """Returns string representation of rectangle instance."""
+        return "[Rectangle]" + \
+            f" ({self.id}) {self.x}/{self.y} - {self.width}/{self.height}"
