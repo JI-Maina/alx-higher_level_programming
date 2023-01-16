@@ -106,3 +106,45 @@ class Rectangle(Base):
         """Returns string representation of rectangle instance."""
         return "[Rectangle]" + \
             f" ({self.id}) {self.x}/{self.y} - {self.width}/{self.height}"
+
+    def update(self, *args, **kwargs):
+        """Assigns an argument to each attribute.
+
+        Args:
+            args (tuple): new values.
+                1st argument should be the id attribute
+                2nd argument should be the width attribute
+                3rd argument should be the height attribute
+                4th argument should be the x attribute
+                5th argument should be the y attribute
+
+        kwargs:
+            kwargs (dict): contains a key/word pair of new arguements.
+        """
+        if args and len(args) != 0:
+            x = 0
+            for arg in args:
+                if x == 0:
+                    self.id = arg
+                elif x == 1:
+                    self.width = arg
+                elif x == 2:
+                    self.height = arg
+                elif x == 3:
+                    self.x = arg
+                elif x == 4:
+                    self.y = arg
+                x += 1
+
+        elif kwargs and len(kwargs) != 0:
+            for key, value in kwargs.items():
+                if key == 'id':
+                    self.id = value
+                elif key == 'width':
+                    self.width = value
+                elif key == 'height':
+                    self.height = value
+                elif key == 'x':
+                    self.x = value
+                elif key == 'y':
+                    self.y = value
