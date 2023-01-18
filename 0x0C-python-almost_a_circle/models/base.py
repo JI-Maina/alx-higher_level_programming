@@ -53,7 +53,6 @@ class Base:
                 json_dict = json.loads(cls.to_json_string(instance))
                 content.append(json_dict)
 
-
         with open(filename, "w") as f:
             json.dump(content, f)
 
