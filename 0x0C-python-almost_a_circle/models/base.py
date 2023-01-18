@@ -45,13 +45,17 @@ class Base:
             list_objs (list): a list of instances.
         """
         filename = cls.__name__ + ".json"
+
+        content = []
+        if list_objs is not None:
+            for instance in list_objs:
+                instance = instance.to_dictionary()
+                json_dict = json.loads(cls.to_json_string(instance))
+                content.append(json_dict)
+
+
         with open(filename, "w") as f:
-            if list_objs is None:
-                f.write("[]")
-            else:
-                for instance in list_objs:
-                    dict_str = [instance.to_dictionary()]
-                    f.write(Base.to_json_string(dict_str))
+            json.dump(content, f)
 
     @staticmethod
     def from_json_string(json_string):
