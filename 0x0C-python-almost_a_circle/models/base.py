@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Defines a base class model."""
 import json
+import csv
 
 
 class Base:
@@ -95,5 +96,58 @@ class Base:
         except IOError:
             return []
 
-    def __del__(self):
+#   def __del__(self):
         pass
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """Writes the CSV format representation of list_objs to a file.
+
+        Args:
+            list_objs (list): a list of instances.
+        """
+        filename = cls.__name__ + ".csv"
+        with open(filename, mode='w', newline='', encoding='utf8') as f:
+            write_this = csv.writer(f, delimiter=' ')
+
+            if cls.__name__ == "Rectangle":
+                for instance in list_objs:
+                    string = ""
+                    instance = instance.to_dictionary()
+                    string += (str(instance['id']) + ',' +
+                            str(instance['width']) + ',' +
+                            str(instance['height']) + ',' +
+                            str(instance['x']) + ',' +
+                            str(instance['y']))
+                    write_this.writerow(string)
+
+    
+            if cls.__name__ == "Square":
+                for instance in list_objs:
+                    string = ""
+                    instance = instance.to_dictionary()
+                    string += (str(instance['id']) + ',' +
+                            str(instance['width']) + ',' +
+                            str(instance['height']) + ',' +
+                            str(instance['x']) + ',' +
+                            str(instance['y']))
+                    write_this.writerow(string)
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """Returns a csv of instances."""
+        filename = str(cls.__name__) + ".json"
+        try:
+            with open(filename, "r", newline="") as f:
+                if cls.__name__ == "Rectangle":
+                    fieldnames = ["id", "width", "height", "x", "y"]
+                else:
+                    fieldnames = ["id", "size", "x", "y"]
+
+                list_dicts = csv.DictReader(f, fieldnames=fieldnames)
+                list_dicts = [dict([k, int(v)] for k, v in d.items())
+                        for d in list_dicts]
+                return [cls.create(**d) for d in list_dicts]
+
+        except IOError:
+            return []
