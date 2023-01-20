@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Defines a base class model."""
 import json
+import turtle
 import csv
 
 
@@ -151,3 +152,44 @@ class Base:
 
         except IOError:
             return []
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        """Opens a window and draws all the Rectangles and Squares.
+
+        Args:
+            list_rectangles (list): A list of rectangle objects to draw.
+            list_squares (list): A list of square objects to draw.
+        """
+        pic = turtle.Turtle()
+        pic.screen.bgcolor("#b7312c")
+        pic.pensize(3)
+        pic.shape("turtle")
+
+        pic.color("#ffffff")
+        for rec in list_rectangles:
+            pic.showturtle()
+            pic.up()
+            pic.goto(rec.x, rec.y)
+            pic.down()
+
+            for i in range(2):
+                pic.forward(rec.width)
+                pic.left(90)
+                pic.forward(rec.width)
+                pic.left(90)
+            pic.hideturtle()
+
+        pic.color("#b5e3d8")
+        for sq in list_squares:
+            pic.showturtle()
+            pic.penup()
+            pic.goto(sq.x, sq.y)
+            pic.pendown()
+
+            for i in range(4):
+                pic.forward(sq.width)
+                pic.left(90)
+            pic.hideturtle()
+
+        turtle.exitonclick()
