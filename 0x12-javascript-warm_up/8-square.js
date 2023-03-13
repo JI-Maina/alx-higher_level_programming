@@ -1,0 +1,15 @@
+#!/usr/bin/node
+/* Prints a square */
+
+/* import process module */
+const process = require('process');
+
+const size = parseInt(process.argv[2]);
+
+if (!size) {
+  console.log('Missing size');
+}
+
+for (let i = 0; i < size; i++) {
+  console.log('X'.repeat(size));
+}
