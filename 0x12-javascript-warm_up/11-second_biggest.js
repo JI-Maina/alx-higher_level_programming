@@ -6,7 +6,10 @@ const len = process.argv.length;
 if (len <= 3) {
   console.log(0);
 } else {
+  /* make array copy to arr */
   let arr = [...process.argv];
+
+  /* delete first two elements */
   arr = arr.slice(1);
   arr = arr.slice(1);
 
