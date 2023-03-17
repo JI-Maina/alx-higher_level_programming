@@ -9,7 +9,7 @@ import MySQLdb
 if __name__ == "__main__":
     user = sys.argv
 
-    db = MySQLdb.connect(user=user[1], passwd=user[2], db=user[3])
+    db = MySQLdb.connect(user=user[1], passwd=user[2], db=user[3], port=3306)
 
     cur = db.cursor()
     cur.execute("SELECT * FROM states WHERE left(name, 1)='N' ORDER BY id")
