@@ -25,9 +25,9 @@ if __name__ == "__main__":
     # query the data
     state = session.query(State).first()
 
-    if (state):
-        print(f"{state.id}: {state.name}")
-    else:
+    if state is None:
         print()
+    else:
+        print(f"{state.id}: {state.name}")
 
     session.close()
