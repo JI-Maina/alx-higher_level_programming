@@ -10,5 +10,5 @@ if __name__ == "__main__":
     r = resp.text
 
     print("Body response:")
-    print("\t- type: ", type(r))
-    print("\t- content: ", r)
+    print("\t- type:", type(r))
+    print("\t- content:", r)
