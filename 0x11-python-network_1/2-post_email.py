@@ -7,11 +7,11 @@ if __name__ == "__main__":
     from urllib.request import urlopen, Request
     from sys import argv
 
-    data1 = f"email={argv[2]}".encode('utf8')
+    data1 = f"email={argv[2]}".encode('utf-8')
 
-    # req = Request(argv[1], data=data1, method='POST')
+    req = Request(argv[1], data=data1, method='POST')
 
-    with urlopen(argv[1], data1) as response:
+    with urlopen(req) as response:
         resp = response.read().decode('utf-8')
 
     print(resp)
