@@ -4,14 +4,12 @@ email as a parameter, and displays the body of the response (decoded in utf-8)
 """
 
 if __name__ == "__main__":
-    from urllib.request import urlopen, Request
+    from urllib.request import urlopen
     from sys import argv
 
-    data1 = f"email={argv[2]}".encode('utf-8')
+    data = f"email={argv[2]}".encode('utf-8')
 
-    req = Request(argv[1], data=data1, method='POST')
-
-    with urlopen(req) as response:
+    with urlopen(argv[1], data) as response:
         resp = response.read().decode('utf-8')
 
     print(resp)
