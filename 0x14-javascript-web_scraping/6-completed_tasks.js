@@ -30,7 +30,7 @@ request(url, function (error, response, body) {
             count += 1;
           }
         }
-        if (count != 0) compTask[id] = count;
+        if (count !== 0) compTask[id] = count;
       }
     }
     console.log(compTask);
